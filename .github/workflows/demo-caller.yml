@@ -13,8 +13,8 @@ env:
 jobs:
   demo-job-caller:
     runs-on: ubuntu-latest
-    env:
-      MY_ENV: "from job"
+    # env:
+    #   MY_ENV: "from job"
     steps:
     - name: 'Print'
       run: echo "Env ${{ env.MY_ENV }}"
