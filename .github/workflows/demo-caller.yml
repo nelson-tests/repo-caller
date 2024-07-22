@@ -1,0 +1,12 @@
+name: 'Action Caller'
+
+on:
+    workflow_dispatch:
+
+jobs:
+  call-workflow-passing-data:
+    uses: nelson-tests/repo-called/.github/workflows/demo-called.yml@main
+    with:
+      my-in: "my input"
+    secrets:
+      my-sec: "xpto-secret"
