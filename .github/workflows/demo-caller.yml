@@ -3,11 +3,27 @@ name: 'Action Caller'
 on:
     workflow_dispatch:
 
+env:
+  MY_ENV: "from workflow"
+
+
 jobs:
   demo-job-caller:
-    uses: nelson-tests/repo-called/.github/workflows/demo-called.yml@main
-    with:
-      #my-in: "my input"
-      my-in: ${{ secrets.mysupersec }}
-    secrets:
-      my-sec: "xpto-secret"
+    runs-on: ubuntu-latest
+    env:
+      MY_ENV: "from job"
+    steps:
+    - name: 'Print'
+      run: echo "Env ${{ env.MY_ENV }}"
+      env:
+        MY_ENV: "my action"
+
+
+#   demo-job-caller:
+#     uses: nelson-tests/repo-called/.github/workflows/demo-called.yml@main
+#     with:
+#       my-in: "my input"
+#       # my-in: ${{ secrets.mysupersec }}
+#     secrets:
+#       my-sec: "xpto-secret"
+#       # my-sec: ${{ secrets.mysupersec }}
